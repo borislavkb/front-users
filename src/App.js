@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useEffect, useState} from 'react';
+import Form from "./components/Form"
+import {Link} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
+import SingleUserPage from './pages/SingleUserPage';
+import UsersPage from './pages/UsersPage';
 
-function App() {
+export default function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div>
+      <nav className="nav-bar">
+        <Link className="nav-link" to="/">Users list</Link>
+        <Link className="nav-link" to="/add-user">Add a new user</Link>
+      </nav>
+      <Routes>
+      <Route path="/" element={<UsersPage />}>
+         </Route>
+      <Route path="/add-user" element={<Form />}>
+       </Route>
+       <Route path="/:id" element={<SingleUserPage />}>
 
-export default App;
+       </Route>
+    </Routes>
+    </div>
+    
+  )
+    
+
+  }
