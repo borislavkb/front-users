@@ -1,19 +1,16 @@
 import './App.css';
 import React, {useEffect, useState} from 'react';
 import Form from "./components/Form"
-import {Link} from 'react-router-dom';
 import {Routes, Route} from 'react-router-dom';
 import SingleUserPage from './pages/SingleUserPage';
 import UsersPage from './pages/UsersPage';
+import Nav from './components/Nav';
 
 export default function App() {
 
   return (
     <div>
-      <nav className="nav-bar">
-        <Link className="nav-link" to="/">Users list</Link>
-        <Link className="nav-link" to="/add-user">Add a new user</Link>
-      </nav>
+      <Nav />
       <Routes>
       <Route path="/" element={<UsersPage />}>
          </Route>
