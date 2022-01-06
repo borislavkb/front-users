@@ -2,8 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import "./Form.css";
-import {ToastContainer, toast} from 'react-toastify';
+import "./EditForm.css"
 
 const schema = yup.object({
     firstName: yup.string().required(),
@@ -13,74 +12,58 @@ const schema = yup.object({
     birthDate: yup.date().required()
   }).required();
 
-export default function Form({onClick}){
+export default function EditForm(id){
 
-  const userCreated = () => {
-    toast("User added to Database !", {
-      className: "custom-toast",
-      draggable: true, 
-      position: toast.POSITION.TOP_CENTER,
-    })
-  }
-    
     const { register, handleSubmit, formState:{ errors } } = useForm({
         resolver: yupResolver(schema)
       });
-      const url = "http://localhost:7000/"
-      const onSubmit = newUser => {
+      const url = `http://localhost:7000/user/${id}`;
+      const onSubmit = updateUser => 
         fetch(url, {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 "Content-Type" : "application/json",
             },
-            body: JSON.stringify(newUser)
+            body: JSON.stringify(updateUser)
         
         })
-        .then((res) => {res.json()
-        .catch((error) => console.error(error))
-      ;});
-      userCreated();
-      
-        }
+        .then((res) => res.json())
     
-      
         
     return (
-        <div className="form-container">
-        <form className="App-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="edit-form-container">
+        <form className="Edit-form" onSubmit={handleSubmit(onSubmit)}>
 
 
 
-        <label>First Name: </label>
+        <label> Edit First Name: </label>
           <input {...register("firstName")} />
           <p>{errors.firstName?.message}</p>
-          <label>Second Name: </label>
+          <label>Edit Second Name: </label>
           <input {...register("secondName")} />
           <p>{errors.firstName?.message}</p>
             
-            <label>Titel: </label>
+            <label> Edit Titel: </label>
           <select {...register("titel")}>
             <option value="Dr.">Dr.</option>
             <option value="Prof.">Prof.</option>
             <option value="Prof. Dr.">Prof. Dr.</option>
-            <option >no titel</option>
+            <option value>no titel</option>
           </select>
         
-            <label>Gender: </label>
+            <label> Edit Gender: </label>
           <select {...register("gender")}>
             <option value="female">female</option>
             <option value="male">male</option>
             <option value="other">other</option>
           </select>
          
-         <label>Birthdate: </label>
+         <label> Edit Birthdate: </label>
          <input type="date" {...register("birthDate")}></input>
     
-          <label>Create user:</label>
+          <label>Edit user:</label>
           <input className="submit-btn" type="submit" />
         </form>
-        <ToastContainer />
-         
         </div>
     )
 }

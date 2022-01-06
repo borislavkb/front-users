@@ -3,29 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
-.nav-bar {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 3rem; 
-  background: rgb(63, 94, 251);
-  background: radial-gradient(
-    circle,
-    rgb(99, 122, 238) 0%,
-    rgb(233, 122, 144) 100%
-  );
-}
 
-.nav-link {
-  padding: 1rem;
-  text-decoration: none;
-}
-
-.nav-link:hover {
-  color: whitesmoke;
-}
 
 li{
   list-style: none;
@@ -38,6 +19,7 @@ li{
   align-items: center;
   border: solid 2px black; 
   margin: 1rem; 
+  
 
 }
 

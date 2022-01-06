@@ -1,13 +1,14 @@
 import {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import UserCard from "../components/UserCard";
 import "./UsersPage.css";
+import EditForm from "../components/EditForm";
 
 export default function UsersPage(){
 
 
-    const URL = 'https://server-test-bb.herokuapp.com/users'
+    const URL = 'http://localhost:7000/'
     const [data, setData] = useState([]);
+    
   
     useEffect(()=> {
       fetch(URL)
@@ -20,8 +21,12 @@ export default function UsersPage(){
         console.log(err)
       })
     }, []);
+
+
   
     function renderUserList(){
+
+      
   
   
         if(data.length === 0){
@@ -36,21 +41,21 @@ export default function UsersPage(){
           data?.map((user, index) => {
                    return (
                      <div className="card">
-                       <Link to={`/${user._id}`}>{`${user.firstName} ${user.secondName}`}</Link>
+                     <Link to={`/user/${user._id}`}>{`${user.firstName}, ${user.secondName}`}</Link>
     
                              <li key={user._id}>
-                               <p>{user.titel}</p>
-                               <p>{user.firstName}</p>
-                               <p>{user.secondName}</p>
-                               <p>{user.gender}</p>
-                               <p>{user.birthDate}</p>
+                               <p>Title: {user.titel}</p>
+                               <p>First name: {user.firstName}</p>
+                               <p>Second name: {user.secondName}</p>
+                               <p>Gender: {user.gender}</p>
+                               <p>Birthday: {user.birthDate.slice(0, 10)}</p>
                              </li>
-                            <button >Bearbeiten</button>
+                            
                            
                      </div>)}))}}
     
                          
-    return renderUserList();
+    return <div className="container-cards">{renderUserList()}</div>;
 }
     
     

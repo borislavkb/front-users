@@ -1,3 +1,8 @@
+.container-cards {
+  height: auto;
+}
+
+
 .card {
     background-color: var(--background);
     display: block;
@@ -25,6 +30,8 @@
         0 0 0 -3px var(--background), 0 0 0 0  var(--orange),
         0 0 0 -3px  var(--background), 0 0 0 0  var(--red);
   }
+
+  
   
   button {
       margin: 0.5rem;
@@ -38,6 +45,13 @@
     background-color: rgba(234, 222, 300, 443);
   }
   
+  .hidden-on{
+    visibility: visible;
+  }
+
+  .hidden-off{
+    visibility: hidden;
+  }
   
   
   
