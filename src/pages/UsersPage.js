@@ -6,7 +6,7 @@ import EditForm from "../components/EditForm";
 export default function UsersPage(){
 
 
-    const URL = 'http://localhost:7000/'
+    const URL = 'https://backend-project-2022.herokuapp.com/'
     const [data, setData] = useState([]);
     
   

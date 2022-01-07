@@ -26,7 +26,7 @@ export default function Form({onClick}){
     const { register, handleSubmit, formState:{ errors } } = useForm({
         resolver: yupResolver(schema)
       });
-      const url = "http://localhost:7000/"
+      const url = "https://backend-project-2022.herokuapp.com/"
       const onSubmit = newUser => {
         fetch(url, {
             method: "POST",

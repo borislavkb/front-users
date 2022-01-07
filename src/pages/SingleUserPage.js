@@ -37,7 +37,7 @@ export default function SingleUserPage({userID}){
           birthDate: yup.date().required()
         }).required();
 
-        const URL = `http://localhost:7000/user/${id}`;
+        const URL = `https://backend-project-2022.herokuapp.com/user/${id}`;
 
         useEffect(()=> {
             fetch(URL)
@@ -66,7 +66,7 @@ export default function SingleUserPage({userID}){
             }, [update]);
 
     function handleDelete(){
-              const URL = `http://localhost:7000/user/${id}`;
+              const URL = `https://backend-project-2022.herokuapp.com/user/${id}`;
                 fetch(URL, {method: 'DELETE', 
               headers: { 'Content-Type' : 'application/json'},
             
